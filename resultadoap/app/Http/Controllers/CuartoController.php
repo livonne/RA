@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cuarto;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+
 /**
  * Class CuartoController
  * @package App\Http\Controllers
@@ -18,12 +16,6 @@ class CuartoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['listaAPI', 'loginAPI']]);
-    }
-
     public function index()
     {
         $cuartos = Cuarto::paginate();
@@ -113,22 +105,5 @@ class CuartoController extends Controller
 
         return redirect()->route('cuartos.index')
             ->with('success', 'Cuarto deleted successfully');
-    }
-
-    public function listaAPI(Request $request){
-        if($request->user()!=null){
-        $cuarto = Cuarto::all();
-        return $cuarto;
-    }
-    return "Debes registrate";
-    }
-
-    public function loginAPI(Request $request){
-        if( Auth::guard('web2')->attempt(['id' => $request->input('u'), 'password' => $request->input('p')]) ){
-            $token = Str::random(60);
-            Auth::guard('web2')->user()->forceFill(['api_token' => hash('sha256', $token)])->save();
-            return '{"respuesta": "Usuario aceptado","cliente":'. Auth::guard('web2')->user() .' ,"token":"'. $token .'"}';
-        }
-        return '{"respuesta": "usuario no valido"}';
     }
 }

@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header bg-secondary">
+                    <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                <b>{{ __('Cuarto') }}</b>
+                                {{ __('Cuarto') }}
                             </span>
 
                              <div class="float-right">
@@ -33,7 +33,7 @@
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
-                                    <tr bgcolor='E77319'>
+                                    <tr>
                                         <th>No</th>
                                         
 										<th>Titulo</th>
@@ -47,12 +47,12 @@
                                 <tbody>
                                     @foreach ($cuartos as $cuarto)
                                         <tr>
-                                            <td bgcolor='FC9A43'>{{ ++$i }}</td>
+                                            <td>{{ ++$i }}</td>
                                             
-											<td bgcolor='FFAF69'>{{ $cuarto->titulo }}</td>
-											<td bgcolor='FBC89B'>{{ $cuarto->descripcion }}</td>
-											<td bgcolor='FFDAB9'>{{ $cuarto->precio }}</td>
-											<td bgcolor='EBCCAF'>{{ $cuarto->ubicacion }}</td>
+											<td>{{ $cuarto->titulo }}</td>
+											<td>{{ $cuarto->descripcion }}</td>
+											<td>{{ $cuarto->precio }}</td>
+											<td>{{ $cuarto->ubicacion }}</td>
 
                                             <td>
                                                 <form action="{{ route('cuartos.destroy',$cuarto->id) }}" method="POST">
