@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card ">
-                <div class="card-header bg-warning"><b>{{ __('Bienvenido') }}</b></div>
+            <div class="card">
+                <div class="card-header">{{ __('Bienvenido') }}</div>
                 <center><h3>Clima en este momento</h3></center>
         <div id="cajitas"class="cascade">
                             <div id="caja1">

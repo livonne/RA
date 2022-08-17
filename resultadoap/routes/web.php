@@ -23,3 +23,5 @@ Route::resource('/cuartos', CuartoController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/privacidad', [App\Http\Controllers\AvisoController::class, 'index'])->name('privacidad');
